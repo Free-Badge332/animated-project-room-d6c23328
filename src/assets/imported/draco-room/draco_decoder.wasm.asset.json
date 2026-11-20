@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "asset_id": "0f148236-f9cf-4f22-aa45-798957e75b32",
+  "project_id": "78ffcd59-87cb-44b4-b126-4d226a26b3ac",
+  "url": "/__l5e/assets-v1/0f148236-f9cf-4f22-aa45-798957e75b32/draco_decoder.wasm",
+  "r2_key": "a/v1/78ffcd59-87cb-44b4-b126-4d226a26b3ac/0f148236-f9cf-4f22-aa45-798957e75b32/draco_decoder.wasm",
+  "original_filename": "draco_decoder.wasm",
+  "size": 285747,
+  "content_type": "application/wasm",
+  "created_at": "2026-11-20T12:07:12Z"
+}

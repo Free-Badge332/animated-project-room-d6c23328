@@ -5,7 +5,9 @@
  *   build resolves @import from the filesystem. Load those with a <link> in the head() of
  *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
  */
-@import "tailwindcss" source(none);
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme) source(none);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
 @source "../src";
 @import "tw-animate-css";
 
@@ -73,6 +75,23 @@
 }
 
 :root {
+  --screen-background: oklch(0.995 0.002 190);
+  --screen-chip: oklch(0.94 0.02 185);
+  --screen-foreground: oklch(0.17 0.02 200);
+  --screen-accent: oklch(0.45 0.1 185);
+  --screen-muted: oklch(0.38 0.02 200);
+  --room-surface: oklch(0.96 0.007 290);
+  --room-ink: oklch(0.24 0.02 190);
+  --room-navigation: oklch(0.98 0.004 190 / 94%);
+  --room-border: oklch(0.82 0.015 190);
+  --room-accent: oklch(0.5 0.09 185);
+  --room-overlay: oklch(0.15 0.01 190 / 65%);
+  --room-shadow: 0 12px 35px oklch(0.2 0.01 190 / 12%);
+  --portfolio-text: oklch(0.94 0.005 300);
+  --portfolio-muted: oklch(0.75 0.005 300);
+  --portfolio-border: oklch(0.35 0.005 300);
+  --portfolio-tool-surface: oklch(0.19 0.005 300);
+  --portfolio-accent: var(--accentColor);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
