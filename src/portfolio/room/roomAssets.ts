@@ -18,15 +18,16 @@ export const roomAssets = {
   logo: logo.url,
 };
 
-export type RoomProject = { image: string; url: string; mobileUrl?: string };
+export const GITHUB_PROFILE = "https://github.com/ezadin2";
+export type RoomProject = { image: string; url: string; mobileUrl?: string; imageOnly?: boolean };
 
 export const roomProjects: RoomProject[] = [
-  { image: adminAndMobile.url, url: "https://aregenkibet.web.app", mobileUrl: "https://adminpanel-bx43q6fid-ezadin-badrus-projects.vercel.app/" },
-  { image: proshop.url, url: "https://github.com/ezadin2/proshop-demo.git" },
-  { image: myTeachers.url, url: "https://abuanwar072.github.io/Flutter-Responsive-Admin-Panel-or-Dashboard/" },
-  { image: wholesale.url, url: "https://github.com/ezadin2/Flight-Booking-App-Flutter.git" },
-  { image: chatApp.url, url: "https://github.com/ezadin2/nextjs-setup" },
-  { image: audio.url, url: "https://github.com/ezadin2/Audio-player.git" },
+  { image: adminAndMobile.url, url: "https://aregenkibet.web.app", mobileUrl: "https://adminpanel-bx43q6fid-ezadin-badrus-projects.vercel.app/", imageOnly: true },
+  { image: proshop.url, url: "https://github.com/ezadin2/proshop-demo.git", imageOnly: true },
+  { image: myTeachers.url, url: "https://abuanwar072.github.io/Flutter-Responsive-Admin-Panel-or-Dashboard/", imageOnly: true },
+  { image: wholesale.url, url: "https://github.com/ezadin2/Flight-Booking-App-Flutter.git", imageOnly: true },
+  { image: chatApp.url, url: "https://github.com/ezadin2/nextjs-setup", imageOnly: true },
+  { image: audio.url, url: "https://github.com/ezadin2/Audio-player.git", imageOnly: true },
   { image: "/__l5e/assets-v1/20e88b95-10a2-4d36-94e3-a42dfc805c92/quran.png", url: "https://hasset-delivery-front-end-side.onrender.com/" },
   { image: "/__l5e/assets-v1/7a1f208d-c6b6-4e56-864a-2353e6318e80/techxpert.png", url: "https://techxpert-rental-market-place.vercel.app/" },
   { image: "/__l5e/assets-v1/c035a1c3-9d7f-4cbe-879a-d4ea37a54e0f/my-quran-onrender.png", url: "https://my-quran.onrender.com/" },

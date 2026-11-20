@@ -4,6 +4,7 @@ import { resumeUrl } from "../data";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Award, BriefcaseBusiness, Code2, Grid2X2, Mail, Menu, UserRound, X, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GITHUB_PROFILE } from "../room/roomAssets";
 import { createRoom } from "../room/roomScene";
 import { getSectionScreens, screenSectionTitles } from "../room/sectionScreens";
 import { roomIsReady, roomLoadingProgress } from "../room/readiness";
@@ -91,7 +92,7 @@ const RoomHome = () => {
           </aside>
         </div>
       )}
-      {choice && <div className="room-choice" onClick={() => setChoice(null)}><div className="room-choice-wide" onClick={e => e.stopPropagation()}><div className="room-choice-toolbar">{choice.url && <Button variant="outline" onClick={() => setView("url")}>Web</Button>}{choice.mobileUrl && <Button variant="outline" onClick={() => setView("mobileUrl")}>Mobile / Admin</Button>}<Button variant="outline" size="icon" aria-label="Close project" onClick={() => setChoice(null)}><X /></Button></div><div className="room-project"><iframe src={choice[view] || choice.url || choice.mobileUrl} title="Project preview" /></div></div></div>}
+      {choice && <div className="room-choice" onClick={() => setChoice(null)}><div className="room-choice-wide" onClick={e => e.stopPropagation()}>{choice.imageOnly ? <><div className="room-choice-toolbar"><Button asChild variant="outline"><a href={GITHUB_PROFILE} target="_blank" rel="noopener noreferrer">View on GitHub ↗</a></Button><Button variant="outline" size="icon" aria-label="Close project" onClick={() => setChoice(null)}><X /></Button></div><div className="room-project"><img src={choice.image} alt="Project screenshot" /></div></> : <><div className="room-choice-toolbar">{choice.url && <Button variant="outline" onClick={() => setView("url")}>Web</Button>}{choice.mobileUrl && <Button variant="outline" onClick={() => setView("mobileUrl")}>Mobile / Admin</Button>}<Button variant="outline" size="icon" aria-label="Close project" onClick={() => setChoice(null)}><X /></Button></div><div className="room-project"><iframe src={choice[view] || choice.url || choice.mobileUrl} title="Project preview" /></div></>}</div></div>}
     </div>
   );
 };

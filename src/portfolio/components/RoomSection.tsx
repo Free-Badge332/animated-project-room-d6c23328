@@ -52,9 +52,18 @@ const RoomSection = () => {
         {choice && (
           <div className="room-choice" onClick={() => setChoice(null)}>
             <div onClick={(e) => e.stopPropagation()}>
-              <p>Which version would you like to open?</p>
-              <a href={choice.url} target="_blank" rel="noopener">Web</a>
-              <a href={choice.mobileUrl} target="_blank" rel="noopener">Mobile / Admin</a>
+              {choice.imageOnly ? (
+                <>
+                  <img src={choice.image} alt="Project screenshot" style={{ maxWidth: "80vw", maxHeight: "60vh" }} />
+                  <a href="https://github.com/ezadin2" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                </>
+              ) : (
+                <>
+                  <p>Which version would you like to open?</p>
+                  <a href={choice.url} target="_blank" rel="noopener">Web</a>
+                  <a href={choice.mobileUrl} target="_blank" rel="noopener">Mobile / Admin</a>
+                </>
+              )}
               <button onClick={() => setChoice(null)}>Close</button>
             </div>
           </div>

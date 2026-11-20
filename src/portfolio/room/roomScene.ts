@@ -18,7 +18,7 @@ export type RoomCallbacks = {
   onError?: () => void;
   onFocusChange: (focused: boolean) => void;
   onThemeChange: (theme: RoomTheme) => void;
-  onChooseProject: (urls: { url: string; mobileUrl: string }) => void;
+  onChooseProject: (urls: { url: string; mobileUrl: string; image?: string; imageOnly?: boolean }) => void;
 };
 export type RoomApi = {
   showAbout: () => void;
@@ -209,7 +209,7 @@ export function createRoom(container: HTMLElement, canvas: HTMLCanvasElement, cb
     tex.colorSpace = THREE.SRGBColorSpace;
     const plane = new THREE.Mesh(new THREE.PlaneGeometry(0.54, 0.3), new THREE.MeshBasicMaterial({ color: 0xffffff, map: tex, transparent: true, opacity: 0 }));
     plane.name = "project";
-    plane.userData = { url: project.url, mobileUrl: project.mobileUrl };
+    plane.userData = { url: project.url, mobileUrl: project.mobileUrl, image: project.image, imageOnly: project.imageOnly };
     const y = 1.2 - Math.floor(i / 4) * 0.36;
     plane.position.set(0.2 + (i % 4) * 0.6, y, -1.15);
     plane.scale.set(0, 0, 0);
@@ -351,8 +351,8 @@ export function createRoom(container: HTMLElement, canvas: HTMLCanvasElement, cb
         return;
       }
       if (name === "project" && hit.object.material.opacity > 0.5) {
-        const { url, mobileUrl } = hit.object.userData;
-        if (url || mobileUrl) cb.onChooseProject({ url, mobileUrl });
+        const { url, mobileUrl, image, imageOnly } = hit.object.userData;
+        if (url || mobileUrl || imageOnly) cb.onChooseProject({ url, mobileUrl, image, imageOnly });
         return;
       }
       if (name === "Book" || name === "Book001") { showAbout(); return; }
