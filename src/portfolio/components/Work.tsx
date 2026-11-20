@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "../data";
+import { projects, isImageOnlyProject, GITHUB_PROFILE_URL } from "../data";
 import WorkImage from "./WorkImage";
 import "./styles/Work.css";
 
@@ -35,11 +35,11 @@ const Work = () => {
                 <h4>Tools & technologies</h4><p>{project.technologies.join(" · ")}</p>
                 <p className="project-description">{project.description}</p>
                 <div className="project-links">
-                  {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Live project ↗</a>}
-                  {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer">GitHub ↗</a>}
+                  {project.liveUrl && !isImageOnlyProject(project) && <a href={project.liveUrl} target="_blank" rel="noreferrer">Live project ↗</a>}
+                  {(project.githubUrl || isImageOnlyProject(project)) && <a href={isImageOnlyProject(project) ? GITHUB_PROFILE_URL : project.githubUrl} target="_blank" rel="noreferrer">GitHub ↗</a>}
                 </div>
               </div>
-              <WorkImage image={project.image} alt={project.title} link={project.liveUrl || project.githubUrl} />
+              <WorkImage image={project.image} alt={project.title} link={isImageOnlyProject(project) ? GITHUB_PROFILE_URL : project.liveUrl || project.githubUrl} />
             </article>
           ))}
         </div>

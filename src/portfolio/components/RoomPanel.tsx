@@ -1,7 +1,7 @@
 // @ts-nocheck -- in-room panels so visitors never leave the Room
 import { originalMedia } from "../media";
 import { useState } from "react";
-import { projects, certificates, resumeUrl } from "../data";
+import { projects, certificates, resumeUrl, isImageOnlyProject, GITHUB_PROFILE_URL } from "../data";
 import { experience } from "./Career";
 
 const skills = ["html","css","javascript","typescript","react","nextJS","tailwind","vitejs","firebase","mongoDB","postgresql","docker","git","figma","markdown"];
@@ -66,7 +66,9 @@ export const ProjectView = ({ project }) => (
   <div className="room-project">
     <p className="room-tech">{project.technologies?.join(" · ")}</p>
     <p>{project.description}</p>
-    {project.liveUrl ? (
+    {isImageOnlyProject(project) ? (
+      <><img src={project.image} alt={project.title} /><p><a href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer">View on GitHub ↗</a></p></>
+    ) : project.liveUrl ? (
       <iframe src={project.liveUrl} title={project.title} loading="lazy" />
     ) : (
       <img src={project.image} alt={project.title} />

@@ -10,6 +10,10 @@ export type Project = {
   githubUrl?: string;
 };
 
+/** The first 6 projects show only their screenshot and link to the GitHub profile. */
+export const GITHUB_PROFILE_URL = "https://github.com/ezadin2";
+export const isImageOnlyProject = (p: { id: number }) => p.id <= 6;
+
 export const projects: Project[] = [
   {
     id: 1,
